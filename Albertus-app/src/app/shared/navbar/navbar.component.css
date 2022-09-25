@@ -1,0 +1,17 @@
+.header{    
+    height: 100px;
+}
+
+.header > nav{    
+    height: 100%;
+    padding: 0 3rem;
+    background-color: var(--color-primary);
+}
+
+button{    
+    font-family: Hatton;
+}
+
+.logo{
+    height: 38px;    
+}
