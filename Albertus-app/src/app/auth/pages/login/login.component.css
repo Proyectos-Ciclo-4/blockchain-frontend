@@ -1,0 +1,42 @@
+.container-form{
+    height: calc(100vh - 100px);        
+    color: white;
+    background-image: url(../../../../assets/images/background.jpg);
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.login-form{
+    margin-left: 10rem;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.inputs-login{
+    height: 60px;
+}
+
+.btn-register{
+    width: 70%;
+    padding: 1rem;
+    font-family: Hatton;
+    font-size: larger;
+    font-weight: 500;
+    color: var(--color-secondary);
+    border: 1px solid #ffff;
+    background-color: none;    
+}
+
+.warning{
+    font-family: Hatton;
+}
+
+a{
+    font-size: 1rem;
+    font-family: Hatton;
+    color: #ffff;
+}

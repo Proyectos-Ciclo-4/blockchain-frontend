@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <form
+        class="pt-5"
+        [formGroup]="formRegister"  
+        (submit)="register()"
+        >
+          <div class="w-full">
+            <span class="p-float-label">
+              <input
+                formControlName="email"
+                id="float-input-email",
+                name="email"
+                type="email"
+                pInputText
+                class="font-bold"
+                autocomplete="off"
+              />
+              <label for="float-input-email "
+                >Correo electronico <span class="text-red-600">*</span></label
+              >
+            </span>
+          </div>
+          <div class="w-full mt-5">
+            <span class="p-float-label">
+              <input
+                formControlName="password"
+                id="float-input-password"
+                type="password",
+                name="password"
+                pInputText
+                class="font-bold"
+              />
+              <label for="float-input-password"
+                >Contraseña <span class="text-red-600">*</span></label
+              >
+            </span>
+          </div>
+          <div class="w-full text-center mt-5">
+            <span>* Todos los campos son requeridos</span>            
+          </div>
+          <div class="text-center mt-5">
+            <button
+              [disabled]="!formRegister.valid"
+              pButton
+              type="submit"
+              label="Iniciar sesion"
+            ></button>
+          </div>
+          <div class="w-full text-center mt-5">
+            <a href="#">!Inicia Sesión!</a>
+          </div>
+    </form>
+</div>
