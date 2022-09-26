@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, UserCredential } from '@angular/fire/auth';
 import { LoginModel } from '../interfaces/LoginModel';
 
@@ -6,6 +6,8 @@ import { LoginModel } from '../interfaces/LoginModel';
   providedIn: 'root'
 })
 export class AuthService {
+
+  @Output() sessionActive : EventEmitter<Boolean> = new EventEmitter();
 
   constructor(private auth$: Auth) {}
 

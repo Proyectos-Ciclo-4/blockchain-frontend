@@ -4,8 +4,8 @@
           <a class="navbar-brand logo">
             <img src="../../../assets/images/LogoAlbertus.png" alt="Logo"  class="d-inline-block logo">
           </a>
-          <div class="d-flex" role="search">            
-            <button class="btn fs-3 fw-bold" type="button">Logout</button>
+          <div class="d-flex" *ngIf="sessionActive">            
+            <button class="btn fs-3 fw-bold" type="button" (click)="logout()">Logout</button>
           </div>
         </div>
     </nav>

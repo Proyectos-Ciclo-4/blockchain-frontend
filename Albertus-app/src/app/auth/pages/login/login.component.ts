@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
 
   createFormLogin(): FormGroup<any> {
     return new FormGroup({
-      name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
     });
   }
+
 
   login() {
     this.auth$.login(this.formLogin.value)

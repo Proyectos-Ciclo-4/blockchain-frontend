@@ -1,3 +1,4 @@
+import { LoginComponent } from './auth/pages/login/login.component';
 import { AuthModule } from './auth/auth.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,7 +18,8 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
     // TODO: proteccion de rutas
-  }
+  },
+  
 ];
 
 @NgModule({

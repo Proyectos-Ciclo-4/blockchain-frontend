@@ -1,54 +1,66 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container-form">    
     <form
-        class="pt-5"
-        [formGroup]="formRegister"  
-        (submit)="register()"
-        >
-          <div class="w-full">
-            <span class="p-float-label">
-              <input
-                formControlName="email"
-                id="float-input-email",
-                name="email"
-                type="email"
-                pInputText
-                class="font-bold"
-                autocomplete="off"
-              />
-              <label for="float-input-email "
-                >Correo electronico <span class="text-red-600">*</span></label
-              >
+        class="login-form"
+        [formGroup]="formRegister"
+        (submit)="registerUser()"
+    >   
+        <h2 class="text-center mb-5 fs-1">Registrate</h2> 
+        <div class="w-full mb-5">
+            <span class="d-flex flex-column">                
+                <input
+                    formControlName="name"
+                    id="float-input-name"
+                    type="text"
+                    placeholder="Nombre"
+                    pInputText
+                    class="font-bold inputs-login"
+                    autocomplete="off"
+                />                            
             </span>
-          </div>
-          <div class="w-full mt-5">
-            <span class="p-float-label">
-              <input
-                formControlName="password"
-                id="float-input-password"
-                type="password",
-                name="password"
-                pInputText
-                class="font-bold"
-              />
-              <label for="float-input-password"
-                >Contraseña <span class="text-red-600">*</span></label
-              >
+        </div>   
+        <div class="w-full">
+            <span class="d-flex flex-column">               
+                <input
+                    formControlName="email"
+                    id="float-input-email"
+                    type="email"
+                    placeholder="Correo electronico"
+                    pInputText
+                    class="font-bold inputs-login"
+                    autocomplete="on"
+                />
+                            
             </span>
-          </div>
-          <div class="w-full text-center mt-5">
-            <span>* Todos los campos son requeridos</span>            
-          </div>
-          <div class="text-center mt-5">
+        </div>
+        <div class="w-full mt-5">
+            <span class="d-flex flex-column">                
+                <input
+                    formControlName="password"
+                    id="float-input-password"
+                    type="password"
+                    placeholder="Contraseña"
+                    pInputText
+                    class="font-bold inputs-login"
+                />
+                
+            </span>
+        </div> 
+        <div class="w-full text-center mt-5">
+            <span  class="warning" *ngIf="!formRegister.valid">*Todos los campos son requeridos</span>
+        </div>       
+        <div class="text-center mt-5">
             <button
-              [disabled]="!formRegister.valid"
-              pButton
-              type="submit"
-              label="Iniciar sesion"
-            ></button>
-          </div>
-          <div class="w-full text-center mt-5">
-            <a href="#">!Inicia Sesión!</a>
-          </div>
+                *ngIf="formRegister.valid"                
+                pButton
+                type="submit"            
+                class="btn-register"
+            >Registrarse
+            </button>
+        </div>        
+        <div class="w-full text-center mt-5 register">
+            <a href="">Inicia Sesion</a>
+        </div>
     </form>
 </div>
+  

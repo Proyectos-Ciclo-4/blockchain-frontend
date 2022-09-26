@@ -10,34 +10,36 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   formRegister!: FormGroup;
-  
+
   constructor(
     private auth$: AuthService,
     private swal$: SweetalertService,
     private router: Router
-  ) {    
-    
-  }
+  ) { }
 
   ngOnInit(): void {
     this.formRegister = this.createFormRegister();
   }
-
   createFormRegister(): FormGroup<any> {
     return new FormGroup({
-      email: new FormControl('name', [Validators.required, Validators.email]),
-      password: new FormControl('password', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
     });
   }
-  
-  register(){
-    
-  }
 
-  resetPassword() {
-    this.swal$.resetPassword();
+  registerUser(){
+    this.auth$.register(this.formRegister.value)
+    .then((res) =>
+      this.swal$
+      .succesMessage(`Welcome ${res.user.email!}`)
+      .then(() => this.router.navigate(['/my-apps']))
+    )
+    .catch((err) => {
+      this.swal$.errorMessage(err.code);
+      console.log(err);
+    });
   }
 
 }
