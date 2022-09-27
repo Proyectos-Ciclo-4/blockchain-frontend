@@ -19,7 +19,7 @@ export class ApplicationManagmentComponent implements OnInit {
       title: this.title,
       confirmButtonColor: 'rgb(12 40 73)',
       html: '<strong>Name:</strong><div class="row d-flex justify-content-center mx-5"><input id="name-app" class="mb-3" type="text"/><input class="" type="text"></div>',
-      didOpen: () => {
+      preConfirm: () => {
         const inputValue = Swal.getPopup()?.querySelector('#name-app');
         console.log(inputValue);
       },
