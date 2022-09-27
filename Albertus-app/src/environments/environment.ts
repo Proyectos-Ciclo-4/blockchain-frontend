@@ -12,7 +12,10 @@ export const environment = {
     authDomain: 'albertus-1cde3.firebaseapp.com',
     messagingSenderId: '345907086056',
   },
-  production: false
+  production: false,
+  urlBase:'http://localhost:9091/',
+  urlBaseView:'http://localhost:9092/',
+  urlWebSocket: 'ws://localhost:8081/retrieve'
 };
 
 /*
