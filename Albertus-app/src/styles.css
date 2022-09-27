@@ -2,7 +2,15 @@
 *{
     box-sizing: border-box;
     margin: 0;
-    padding: 0;    
+    padding: 0;
+    font-family: 'Hatton';
+}
+
+@font-face {
+  font-family: 'MyWebFont';
+  src:  url('./assets/fonts/Tt_commons_pro.otf') format('woff2');
+  font-family: 'Hatton';
+  src:  url('./assets/fonts/Hatton.otf') format('woff2'),
 }
 
 *:root{
@@ -10,18 +18,4 @@
     --color-secondary: rgb(12 40 73);
 }
 
-/* @font-face {
-    font-family: 'Hatton';
-    src: url('./assets/fonts/PP\ Hatton\ Medium\ 500.otf'),  format('truetype');
-    font-weight: Medium;
-    font-style: normal;
-} */
-
-@font-face {
-    font-family: 'MyWebFont';
-    src:  url('./assets/fonts/Tt_commons_pro.otf') format('woff2');
-    font-family: 'Hatton';
-    src:  url('./assets/fonts/Hatton.otf') format('woff2'), 
-       
-}
 
