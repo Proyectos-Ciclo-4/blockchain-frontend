@@ -16,15 +16,31 @@ export class ApplicationManagmentComponent implements OnInit {
 
   register() {
     Swal.fire({
-      title: this.title,
-      confirmButtonColor: 'rgb(12 40 73)',
-      html: '<strong>Name:</strong><div class="row d-flex justify-content-center mx-5"><input id="name-app" class="mb-3" type="text"/><input class="" type="text"></div>',
+      title: 'Login Form',
+      html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
+      <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+      confirmButtonText: 'Sign in',
+      focusConfirm: false,
       preConfirm: () => {
-        const inputValue = Swal.getPopup()?.querySelector('#name-app');
-        console.log(inputValue);
-      },
-    }).then(() => {
-      console.log(this.inputValue);
-    });
+        const login = Swal.getPopup()?.querySelector('#login')
+        console.log(login);
+        
+        const password = Swal.getPopup()?.querySelector('#password')
+        if (!login || !password) {
+          Swal.showValidationMessage(`Please enter login and password`)
+        }
+        return { login: login, password: password }
+      }
+    }).then((result) => {
+      const input = document.getElementById('login') as HTMLInputElement;
+      if (input != null) {
+        console.log(input.value); // 👉️ "Initial Value"
+      }
+      /* Swal.fire(`        
+        Login: ${result.value}
+        Password: ${result.value}
+      `.trim()) */
+    })
+    
   }
 }
