@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplicationManagmentComponent implements OnInit {
   title: string = 'Create Application';
-  inputValue: string = '';
+  appName: string = '';
+  dsecription: string = '';
 
   constructor() {}
 
@@ -16,31 +17,24 @@ export class ApplicationManagmentComponent implements OnInit {
 
   register() {
     Swal.fire({
-      title: 'Login Form',
-      html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
-      <input type="password" id="password" class="swal2-input" placeholder="Password">`,
-      confirmButtonText: 'Sign in',
-      focusConfirm: false,
+      title: this.title,
+      html: `<span class="text-start">Name:</span><div class="row d-flex justify-content-center mx-5">
+      <input type="text" class="mb-2 border border-secondary rounded-2" id="app-name" placeholder="App name">
+      <span>Description:</span><input type="text" id="description" class="py-3 border border-secondary rounded-2" placeholder="Description"></div>`,
+      confirmButtonColor: 'rgb(12 40 73)',
       preConfirm: () => {
-        const login = Swal.getPopup()?.querySelector('#login')
-        console.log(login);
-        
-        const password = Swal.getPopup()?.querySelector('#password')
-        if (!login || !password) {
-          Swal.showValidationMessage(`Please enter login and password`)
+        const appName = document.getElementById('app-name') as HTMLInputElement;
+        const description = document.getElementById(
+          'description'
+        ) as HTMLInputElement;
+        if (!appName.value || !description.value) {
+          Swal.showValidationMessage(`Please enter complete information`);
         }
-        return { login: login, password: password }
-      }
+        return { appName: appName.value, description: description.value };
+      },
     }).then((result) => {
-      const input = document.getElementById('login') as HTMLInputElement;
-      if (input != null) {
-        console.log(input.value); // 👉️ "Initial Value"
-      }
-      /* Swal.fire(`        
-        Login: ${result.value}
-        Password: ${result.value}
-      `.trim()) */
-    })
-    
+      this.appName = result.value!.appName;
+      this.dsecription = result.value!.description;
+    });
   }
 }
