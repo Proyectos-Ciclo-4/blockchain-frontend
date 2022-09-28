@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Block } from '../../interfaces/models';
-import { ReportService } from '../../services/report.service';
+import { ApplicationService } from '../../services/application.service';
+import { Block } from '../interfaces/models';
+
+
 
 @Component({
   selector: 'app-report',
@@ -18,9 +20,9 @@ export class ReportComponent implements OnInit {
   selectedDay: string = "";
   blocksToReport:Block[] = [];
 
-  constructor(
-    private request$: ReportService,
+  constructor(    
     private router: Router,
+    private request$: ApplicationService,
     
   ) {
     this.applicationId = this.router.url.split('/').pop()!;
@@ -37,13 +39,13 @@ export class ReportComponent implements OnInit {
   bringBlocksByApplicationID(applicationId:string){
     this.request$.getAllBlocksByApplicationId(applicationId).subscribe(blocks => {
         blocks.map((block: any) => {
-        const ob:Block = {
+        const ob = {
           timeStamp: block.timeStamp,
           hash: block.hash,
           year: block.timeStamp.substring(0,4),
           month: block.timeStamp.substring(5,7),
           day: block.timeStamp.substring(8,10),
-        }
+        } as Block;
         this.blocks.push(ob);
 
         console.log(this.blocks);
@@ -54,19 +56,10 @@ export class ReportComponent implements OnInit {
 
 
   createReport(){
-      this.extractDateInfo();
-      // this.blocksToReport.map(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay)
-      // console.log(this.blocks.filter(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay));
-      console.log(this.selectedDay);
-      // this.blocksToReport = this.blocks.filter(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay) 
-      this.blocksToReport = this.blocks.filter(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay) 
-      console.log(this.blocksToReport); 
-      console.log(this.selectedDate);
+    this.extractDateInfo();         
+    this.blocksToReport = this.blocks.filter(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay);
   }
 
-  // checkBlock(block:Block){
-  //   return block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay;
-  // }
 
   extractDateInfo(){
     this.selectedYear = this.selectedDate.substring(0,4);

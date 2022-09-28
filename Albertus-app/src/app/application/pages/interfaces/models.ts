@@ -3,7 +3,6 @@
 //     timeStamp: string
 // }
 
-
 export type Block = {
     timeStamp: string,
     hash: string,

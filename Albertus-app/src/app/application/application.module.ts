@@ -5,11 +5,13 @@ import { ApplicationRoutingModule } from './application-routing.module';
 import { ApplicationManagmentComponent } from './pages/applicationManagment/application-managment.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReportComponent } from './pages/report/report.component';
 
 
 @NgModule({
   declarations: [
-    ApplicationManagmentComponent
+    ApplicationManagmentComponent,
+    ReportComponent,
   ],
   imports: [
     CommonModule,
