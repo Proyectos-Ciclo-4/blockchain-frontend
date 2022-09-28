@@ -1,0 +1,7 @@
+.btn-success{
+    background-color: var(--color-secondary);
+}
+
+.btn-success:hover{
+    background-color: rgb(19, 63, 114);
+}

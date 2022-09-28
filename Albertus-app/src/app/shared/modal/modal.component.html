@@ -1,0 +1,27 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <input type="text" class="form-control modal-title" id="recipient-name" placeholder={{application?.nameApplication}}>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Token:</label>
+            <span>{{application?.applicationID}}</span>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Descripción:</label>
+            <textarea class="form-control" id="message-text" placeholder={{application?.description}}></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer ">
+        <button type="button" class="btn btn-danger" (click)="deleteApp(application.applicationID)">Eliminar</button>
+        <button type="button" class="btn btn-success" >Editar</button>
+        <a [routerLink]="['report/7c334cc36972cac8b6fa5860773a3e83']" class="btn btn-info" data-bs-dismiss="modal">Generar Reporte</a>
+      </div>
+    </div>
+  </div>
+</div>
