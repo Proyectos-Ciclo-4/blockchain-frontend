@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
+import { ApplicationService } from '../../services/application.service';
 
 @Component({
   selector: 'app-application-managment',
@@ -8,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplicationManagmentComponent implements OnInit {
   title: string = 'Create Application';
-  appName: string = '';
+  bodyRegister: any;
   dsecription: string = '';
 
-  constructor() {}
+  constructor(private applicationService$: ApplicationService) {}
 
   ngOnInit(): void {}
 
@@ -30,11 +31,20 @@ export class ApplicationManagmentComponent implements OnInit {
         if (!appName.value || !description.value) {
           Swal.showValidationMessage(`Please enter complete information`);
         }
-        return { appName: appName.value, description: description.value };
+        return {
+          applicationId: 'LUUUUU',
+          nameApplication: appName.value,
+          description: description.value,
+          isActive: 'true',
+          userId: 'userId2210',
+        };
       },
     }).then((result) => {
-      this.appName = result.value!.appName;
-      this.dsecription = result.value!.description;
+      this.bodyRegister = result.value;
+      console.log(this.bodyRegister);
+      this.applicationService$
+        .registerApp(this.bodyRegister)
+        .subscribe((data) => console.log(data));
     });
   }
 }
