@@ -26,3 +26,9 @@ export type datablock = {
     hasOverCharge: boolean;
     previousHash: string;    
 }
+
+export type UpdateBody = {
+    applicationID: string,
+    nameApplication: string,
+    description: string
+}

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UpdateBody } from 'src/app/application/pages/interfaces/models';
 import { ApplicationService } from 'src/app/application/services/application.service';
 import Swal from 'sweetalert2';
 
@@ -8,7 +10,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
+
   @Input() application!: any;
+  formApplication!: FormGroup;
 
   constructor(
     private application$: ApplicationService
@@ -16,6 +20,14 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
     
+  }
+
+
+  createFormLogin(): FormGroup<any> {
+    return new FormGroup({
+      appName: new FormControl('', [Validators.required]),
+      appDescription: new FormControl('', [Validators.required]),
+    });
   }
 
   deleteApp(idApp : string): void {
@@ -41,5 +53,32 @@ export class ModalComponent implements OnInit {
     })  
     
   }
+
+
+  editApplication(idApp : string){
+
+    console.log(idApp);
+
+
+    const ob = {
+      applicationID: idApp,
+      nameApplication: this.formApplication.value.appName,
+      description: this.formApplication.value.appDescription
+    } as UpdateBody
+
+    console.log(ob);
+
+    // this.application$.updateApp(ob).subscribe(result => {
+    //   Swal.fire(
+    //     'Updated!',
+    //     'Tu aplicacion ha sido Editada.',
+    //     'success'
+    //   )
+    // });
+
+  }
+
+
+
 
 }
