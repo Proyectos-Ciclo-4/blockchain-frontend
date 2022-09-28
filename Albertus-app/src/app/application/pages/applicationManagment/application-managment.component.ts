@@ -18,6 +18,7 @@ export class ApplicationManagmentComponent implements OnInit {
   uuid: string = uuidv4();
   application!: any;
   user!:User;
+  currentApp!:any;
 
   saludar:any;
   constructor(
@@ -32,7 +33,7 @@ export class ApplicationManagmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.auth$.getUser()!;
-    //this.listApps();
+    this.listApps();
   }
 
   register() {
@@ -80,10 +81,11 @@ export class ApplicationManagmentComponent implements OnInit {
         );
       });
   }
-  
-  
 
-  showApp(){
-    this.swal$.showDetailsApp(this.saludar);
+  showApp(idApp:string ) {
+    this.currentApp = this.application.filter(
+      (appActive: any) => appActive.applicationID == idApp
+    )[0];
+    
   }
 }
