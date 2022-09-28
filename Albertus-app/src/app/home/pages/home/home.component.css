@@ -1,0 +1,34 @@
+.home-container{
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: rgb(66, 125, 176);
+    background-image: url(../../../../assets/images/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-container{
+    width: 45%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-title{    
+    width: 50%; 
+    margin-bottom: 10rem; 
+}
+
+.home-title > img{    
+    width: 100%;  
+}
+
+.text-container > p{ 
+    font-weight: 300px;    
+    font-size: 2rem;
+}
