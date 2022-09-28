@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationService } from '../../services/application.service';
+import { WebsocketService } from '../../services/websocket.service';
 import { Block } from '../interfaces/models';
 
 
@@ -23,6 +24,7 @@ export class ReportComponent implements OnInit {
   constructor(    
     private router: Router,
     private request$: ApplicationService,
+    private socketService$: WebsocketService
     
   ) {
     this.applicationId = this.router.url.split('/').pop()!;
@@ -31,12 +33,16 @@ export class ReportComponent implements OnInit {
   
 
   ngOnInit(): void {
-    //this.bringBlocksByApplicationID(this.applicationId);
+    this.bringBlocksByApplicationID(this.applicationId);
+    this.socketService$.conect().subscribe(eventMap => 
+        console.log(eventMap)
+      );
 
   }
 
 
   bringBlocksByApplicationID(applicationId:string){
+    this.blocks = [];
     this.request$.getAllBlocksByApplicationId(applicationId).subscribe(blocks => {
         blocks.map((block: any) => {
         const ob = {
@@ -47,8 +53,6 @@ export class ReportComponent implements OnInit {
           day: block.timeStamp.substring(8,10),
         } as Block;
         this.blocks.push(ob);
-
-        console.log(this.blocks);
       })
     })
 
@@ -56,8 +60,8 @@ export class ReportComponent implements OnInit {
 
 
   createReport(){
-    this.extractDateInfo();  
-           
+    this.extractDateInfo(); 
+    this.blocksToReport = []; 
     this.blocksToReport = this.blocks.filter(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay);
   }
 
