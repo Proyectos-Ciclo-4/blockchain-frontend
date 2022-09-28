@@ -16,7 +16,7 @@ export const environment = {
   // urlBase:'https://albertus-main.herokuapp.com/',
   // urlBaseView:'https://albertus-view.herokuapp.com/',
   // urlWebSocket: 'ws://localhost:8081/retrieve'
-  urlBase:'http://localhost:9091/',
+  urlBase:'http://localhost:9093/',
   urlBaseView:'http://localhost:9092/',
   urlWebSocket: 'ws://localhost:8082/retrieve'
 };

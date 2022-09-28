@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationService } from '../../services/application.service';
 import { WebsocketService } from '../../services/websocket.service';
-import { Block } from '../interfaces/models';
+import { Block, eventMap } from '../interfaces/models';
 
 
 
@@ -32,27 +32,44 @@ export class ReportComponent implements OnInit {
 
   
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.bringBlocksByApplicationID(this.applicationId);
-    this.socketService$.conect().subscribe(eventMap => 
-        console.log(eventMap)
-      );
+    this.socketService$.conect().subscribe(eventMap =>{
+      const event = eventMap as eventMap;
+      console.log(event.type);
+      if(event.type  == "blockCreated"){
+        this.createReport();
+        /* console.log(event.data)
+        const ob = {
+          timeStamp: event.data.timeStamp,
+          hash: event.data.hash,
+          year: event.data.timeStamp.substring(0,4),
+          month: event.data.timeStamp.substring(5,7),
+          day: event.data.timeStamp.substring(8,10),
+          hasOverCharge: event.data.hasOverCharge
+        } as Block;          
+        this.blocks.push(ob); */
+      } 
+    });
 
   }
 
 
   bringBlocksByApplicationID(applicationId:string){
-    this.blocks = [];
     this.request$.getAllBlocksByApplicationId(applicationId).subscribe(blocks => {
         blocks.map((block: any) => {
-        const ob = {
-          timeStamp: block.timeStamp,
-          hash: block.hash,
-          year: block.timeStamp.substring(0,4),
-          month: block.timeStamp.substring(5,7),
-          day: block.timeStamp.substring(8,10),
-        } as Block;
-        this.blocks.push(ob);
+          const validationExists = this.blocks.filter(b => b.hash == block.hash);
+          if (validationExists.length < 1) {
+            const ob = {
+              timeStamp: block.timeStamp,
+              hash: block.hash,
+              year: block.timeStamp.substring(0,4),
+              month: block.timeStamp.substring(5,7),
+              day: block.timeStamp.substring(8,10),
+              hasOverCharge: block.hasOverCharge
+            } as Block;          
+            this.blocks.push(ob);
+          }
       })
     })
 
@@ -60,8 +77,10 @@ export class ReportComponent implements OnInit {
 
 
   createReport(){
-    this.extractDateInfo(); 
-    this.blocksToReport = []; 
+    this.bringBlocksByApplicationID(this.applicationId);
+    console.log(this.blocks);
+    debugger
+    this.extractDateInfo();  
     this.blocksToReport = this.blocks.filter(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay);
   }
 

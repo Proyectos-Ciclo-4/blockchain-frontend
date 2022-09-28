@@ -9,9 +9,10 @@
   <table class="table table-striped mt-5">
     <thead>
       <tr>
-        <th>Transaction</th>
+        <th>Tipo de Transacción</th>
         <th>Hash</th>
-        <th>Creation Time</th>
+        <th>Fecha de Creación</th>
+        <th>Recargo</th>
       </tr>
     </thead>
       <tbody class="table-group-divider">
@@ -19,6 +20,7 @@
           <td>Block Creation</td>
           <td>{{block.hash}}</td>
           <td>{{block.timeStamp}}</td>
+          <td>{{block.hasOverCharge}}</td>
         </tr>       
       </tbody>
   </table>
