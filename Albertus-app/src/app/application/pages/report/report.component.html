@@ -1,0 +1,21 @@
+<p>report works!</p>
+<label for="blockDate">Select a Date: </label>
+<br>
+<input type="date" id="blockDate" (change)="createReport()" [(ngModel)]="selectedDate"  name="blockDate" >
+
+
+<table>
+    <tr>
+      <th>Transaction</th>
+      <th>Hash</th>
+      <th>Creation Time</th>
+    </tr>
+    <tr *ngFor="let block of blocksToReport">
+      <td>Block Creation</td>
+      <td>{{block.hash}}</td>
+      <td>{{block.timeStamp}}</td>
+    </tr>
+  </table>
+
+  <h2>Total Blocks Created: <span>{{blocksToReport.length}}</span></h2>
+
