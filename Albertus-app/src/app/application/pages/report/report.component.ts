@@ -56,7 +56,8 @@ export class ReportComponent implements OnInit {
 
 
   createReport(){
-    this.extractDateInfo();         
+    this.extractDateInfo();  
+           
     this.blocksToReport = this.blocks.filter(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay);
   }
 

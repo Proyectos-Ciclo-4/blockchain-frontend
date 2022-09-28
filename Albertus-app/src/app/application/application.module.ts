@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReportComponent } from './pages/report/report.component';
 
 
+
 @NgModule({
   declarations: [
     ApplicationManagmentComponent,

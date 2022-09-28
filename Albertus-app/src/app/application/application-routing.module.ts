@@ -13,7 +13,7 @@ const routes: Routes = [
         component: ApplicationManagmentComponent
       },
       {
-        path: 'report/angular',
+        path: 'report/:idApplication',
         component: ReportComponent
       }
     ],
