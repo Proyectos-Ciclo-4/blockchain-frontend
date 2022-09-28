@@ -24,21 +24,9 @@
       </button>
     </div>
     <div class="container">
-      <div class="row align-items-center">
+      <div *ngFor="let app of application" class="row align-items-center">
         <button type="button" class="card col-5 mt-3 mx-2">
-          Aplicacion #2
-        </button>
-        <button type="button" class="card col-5 mt-3 mx-2">
-          Aplicacion #3
-        </button>
-        <button type="button" class="card col-5 mt-3 mx-2">
-          Aplicacion #4
-        </button>
-        <button type="button" class="card col-5 mt-3 mx-2">
-          Aplicacion #5
-        </button>
-        <button type="button" class="card col-5 mt-3 mx-2">
-          Aplicacion #1
+          {{ app.nameApplication }}
         </button>
       </div>
     </div>
