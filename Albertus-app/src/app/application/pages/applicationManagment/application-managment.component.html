@@ -1,11 +1,11 @@
+<app-navbar></app-navbar>
 <div class="main-container">
-  <app-navbar></app-navbar>
   <div class="welcome-container">
-    <div class="fs-2">
+    <div class="fs-3">
       Bienvenido,<br />
       <span class="">{{user.displayName}}</span>
     </div>
-    <div>
+    <div class="fs-3">
       Gestiona tus aplicaciones, <br />
       todo desde un solo lugar.
     </div>
@@ -23,11 +23,26 @@
         Registrar Aplicativo
       </button>
     </div>
-    <div class="container">
-      <div *ngFor="let app of application" class="row align-items-center">
-        <button type="button" class="card col-5 mt-3 mx-2">
-          {{ app.nameApplication }}
-        </button>
+    <div class="cards-list">
+      <div *ngFor="let app of application" class="">
+        <button type="button" class="card col-5 mt-3 mx-2" (click)="showApp()">
+          {{ app.nameApplication }} <span class="fs-5">Token: {{app.applicationID}}</span> 
+        </button>        
+      </div>
+      <div class="">
+        <button type="button" class="card mt-3 mx-2" (click)="showApp()">
+          Test <span class="fs-5">Token: 1245468468</span> 
+        </button>        
+      </div>
+      <div class="">
+        <button type="button" class="card mt-3 mx-2" (click)="showApp()">
+          Test <span class="fs-5">Token: 1245468468</span> 
+        </button>        
+      </div>
+      <div class="">
+        <button type="button" class="card mt-3 mx-2" (click)="showApp()">
+          Test <span class="fs-5">Token: 1245468468</span> 
+        </button>        
       </div>
     </div>
   </div>

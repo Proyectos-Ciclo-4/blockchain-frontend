@@ -1,3 +1,4 @@
+import { SweetalertService } from './../../../shared/services/sweetalert.service';
 import Swal from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from '../../services/application.service';
@@ -17,16 +18,21 @@ export class ApplicationManagmentComponent implements OnInit {
   uuid: string = uuidv4();
   application!: any;
   user!:User;
+
+  saludar:any;
   constructor(
     private applicationService$: ApplicationService,
-    private auth$: AuthService
+    private auth$: AuthService,
+    private swal$ : SweetalertService
   ) {
-    
+    this.saludar  = function name() {
+      console.log("hola")
+    }
   }
 
   ngOnInit(): void {
     this.user = this.auth$.getUser()!;
-    this.listApps();
+    //this.listApps();
   }
 
   register() {
@@ -73,5 +79,11 @@ export class ApplicationManagmentComponent implements OnInit {
           (appActive: any) => appActive.active !== false
         );
       });
+  }
+  
+  
+
+  showApp(){
+    this.swal$.showDetailsApp(this.saludar);
   }
 }

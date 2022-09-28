@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
     /* font-family: 'Hatton'; */
 }
 
@@ -14,8 +14,8 @@
 }
 
 *:root{
-    --color-primary: rgb(56 228 248);
-    --color-secondary: rgb(12 40 73);
+  --color-primary: rgb(56 228 248);
+  --color-secondary: rgb(12 40 73);
 }
 
 

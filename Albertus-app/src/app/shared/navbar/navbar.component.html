@@ -8,8 +8,8 @@
             <button class="btn fs-3" type="button" (click)="logout()">Logout</button>
           </div>
           <div class="d-flex" *ngIf="!sessionActive">            
-            <a  [routerLink]="[ '/user/login' ]" class="btn fs-3 fw-bold">Login</a>            
-            <a  [routerLink]="[ '/user/register' ]" class="btn fs-3 fw-bold">Registrate</a>
+            <a  [routerLink]="[ '/user/login' ]" class="btn fs-3 ">Login</a>            
+            <a  [routerLink]="[ '/user/register' ]" class="btn fs-3">Registrate</a>
           </div>
         </div>
     </nav>

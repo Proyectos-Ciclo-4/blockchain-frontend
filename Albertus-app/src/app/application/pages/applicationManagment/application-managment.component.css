@@ -1,5 +1,5 @@
 .main-container{
-  width: auto;
+    width: auto;
     display: flex;
     flex-direction: column;
 
@@ -21,7 +21,7 @@
 }
 
 .welcome-container > div > span {
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 .welcome-container > div:nth-child(2)   {
@@ -34,7 +34,7 @@
 }
 
 .welcome-container img   {
-    height: 90%;
+    height: 80%;
 }
 
 .application-container{
@@ -51,19 +51,20 @@
     height: 30%;
     padding: 0 5rem;
     margin-bottom: 1.5rem;
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 500;
     color: var(--color-secondary);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 
 }
 
 .create-app-container > button{
     padding: 1.2rem 1.5rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: Hatton;
     color: var(--color-secondary);
     border-radius: 1rem;
@@ -75,10 +76,17 @@
     color: white;
 }
 
-
+.cards-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 120px;
+}
 
 .card{
-    height: 8rem;
+    width: 290px;
+    height: 204px;
     font-size: 2rem;
     font-weight: 500;
     color: white;
@@ -102,4 +110,9 @@
 
 .font-title{
   font-family: var(--font-family);
+}
+
+/* swal */
+input#app-name{
+    border: none!important;
 }
