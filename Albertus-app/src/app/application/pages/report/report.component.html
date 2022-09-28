@@ -1,21 +1,28 @@
-<p>report works!</p>
-<label for="blockDate">Select a Date: </label>
-<br>
-<input type="date" id="blockDate" (change)="createReport()" [(ngModel)]="selectedDate"  name="blockDate" >
-
-
-<table>
-    <tr>
-      <th>Transaction</th>
-      <th>Hash</th>
-      <th>Creation Time</th>
-    </tr>
-    <tr *ngFor="let block of blocksToReport">
-      <td>Block Creation</td>
-      <td>{{block.hash}}</td>
-      <td>{{block.timeStamp}}</td>
-    </tr>
+<app-navbar></app-navbar>
+<div class="container py-5">
+  <div class="date-container">
+    <label for="blockDate" class="mb-3">Select a Date: </label>
+    <input type="date" id="blockDate" class="form-control" (change)="createReport()" [(ngModel)]="selectedDate"  name="blockDate" >
+  </div>
+  
+  <table class="table table-striped mt-5">
+    <thead>
+      <tr>
+        <th>Transaction</th>
+        <th>Hash</th>
+        <th>Creation Time</th>
+      </tr>
+    </thead>
+      <tbody class="table-group-divider">
+        <tr *ngFor="let block of blocksToReport">
+          <td>Block Creation</td>
+          <td>{{block.hash}}</td>
+          <td>{{block.timeStamp}}</td>
+        </tr>        
+      </tbody>
   </table>
-
-  <h2>Total Blocks Created: <span>{{blocksToReport.length}}</span></h2>
+  
+  <h2 class="mt-5">Total Blocks Created: <span>{{blocksToReport.length}}</span></h2>
+</div>
+<app-footer></app-footer>
 

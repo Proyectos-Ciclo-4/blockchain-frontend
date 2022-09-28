@@ -1,0 +1,14 @@
+.footer-container{
+    width: 100%;    
+    position: fixed;
+    bottom: 0;
+}
+
+footer{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.redes{
+    color: var(--color-secondary);
+}

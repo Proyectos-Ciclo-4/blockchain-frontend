@@ -31,7 +31,7 @@ export class ReportComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.bringBlocksByApplicationID(this.applicationId);
+    //this.bringBlocksByApplicationID(this.applicationId);
 
   }
 
