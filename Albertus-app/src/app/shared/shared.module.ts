@@ -5,6 +5,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { ModalComponent } from './modal/modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,7 @@ import { ModalComponent } from './modal/modal.component';
     FooterComponent,
     ModalComponent,    
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   exports: [NavbarComponent, FooterComponent, ModalComponent],
 })
 export class SharedModule {}

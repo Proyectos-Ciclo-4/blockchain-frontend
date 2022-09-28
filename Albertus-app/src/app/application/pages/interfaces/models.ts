@@ -10,3 +10,9 @@ export type Block = {
     month: string,
     day: string;
 }
+
+export type UpdateBody = {
+    applicationID: string,
+    nameApplication: string,
+    description: string
+}
