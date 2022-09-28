@@ -10,14 +10,19 @@ import {
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    ...canActivate(() => redirectLoggedInTo(['/my-apps'])) 
+  },
+  {
     path: 'my-apps',
     loadChildren: () => import('./application/application.module').then((m) => m.ApplicationModule),
-    // TODO: proteccion de rutas
+    ...canActivate(() => redirectUnauthorizedTo(['/'])) 
   },
   {
     path: 'user',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
-    // TODO: proteccion de rutas
+    ...canActivate(() => redirectLoggedInTo(['/'])) 
   },
   
 ];

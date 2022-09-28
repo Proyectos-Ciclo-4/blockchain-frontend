@@ -9,8 +9,9 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  sessionActive: boolean = true;
-
+  sessionActive: boolean = false;
+  currentUser: any;
+  
   constructor(
     private auth$: AuthService,
     private router: Router
@@ -21,8 +22,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(){
-    console.log("salir");
-    
+    console.log("salir");    
     this.auth$.logout()
     .then(() => {
       this.auth$.sessionActive.emit(false)
