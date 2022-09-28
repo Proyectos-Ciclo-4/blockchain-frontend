@@ -1,6 +1,8 @@
 import Swal from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from '../../services/application.service';
+import { v4 as uuidv4 } from 'uuid';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-application-managment',
@@ -11,10 +13,18 @@ export class ApplicationManagmentComponent implements OnInit {
   title: string = 'Create Application';
   bodyRegister: any;
   dsecription: string = '';
+  uuid: string = uuidv4();
+  application!: any;
 
-  constructor(private applicationService$: ApplicationService) {}
+  constructor(
+    private applicationService$: ApplicationService,
+    private auth$: AuthService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.auth$.getUser()?.uid);
+    this.listApps();
+  }
 
   register() {
     Swal.fire({
@@ -32,11 +42,11 @@ export class ApplicationManagmentComponent implements OnInit {
           Swal.showValidationMessage(`Please enter complete information`);
         }
         return {
-          applicationId: 'LUUUUU',
+          applicationId: this.uuid,
           nameApplication: appName.value,
           description: description.value,
           isActive: 'true',
-          userId: 'userId2210',
+          userId: this.auth$.getUser()?.uid,
         };
       },
     }).then((result) => {
@@ -44,7 +54,21 @@ export class ApplicationManagmentComponent implements OnInit {
       console.log(this.bodyRegister);
       this.applicationService$
         .registerApp(this.bodyRegister)
-        .subscribe((data) => console.log(data));
+        .subscribe((data) => {
+          console.log(data);
+          this.listApps();
+        });
     });
+  }
+
+  listApps() {
+    this.applicationService$
+      .getAllApplicationsByUserId(this.auth$.getUser()!.uid)
+      .subscribe((app) => {
+        this.application = app;
+        this.application = this.application.filter(
+          (appActive: any) => appActive.active !== false
+        );
+      });
   }
 }
