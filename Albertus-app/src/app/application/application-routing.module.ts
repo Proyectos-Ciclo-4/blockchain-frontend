@@ -4,6 +4,7 @@ import { ApplicationManagmentComponent } from './pages/applicationManagment/appl
 import { ReportComponent } from './pages/report/report.component';
 
 
+
 const routes: Routes = [
   {
     path: '',

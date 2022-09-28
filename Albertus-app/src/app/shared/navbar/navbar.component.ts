@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
@@ -18,7 +19,9 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.auth$.sessionActive.subscribe(sessionActive => this.sessionActive = sessionActive.valueOf());
+    this.sessionActive = getAuth().currentUser ?  true : false;
+    //this.auth$.sessionActive.subscribe(sessionActive => this.sessionActive = sessionActive.valueOf());
+    console.log(this.sessionActive);
   }
 
   logout(){

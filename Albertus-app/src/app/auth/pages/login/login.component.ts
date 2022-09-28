@@ -35,11 +35,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.auth$.login(this.formLogin.value)
-    .then((res) =>
+    .then((res) =>{
+      this.auth$.sessionActive.emit(true);
       this.swal$
       .succesMessage(`Welcome ${res.user.email!}`)
       .then(() => this.router.navigate(['/my-apps']))
-    )
+    })
     .catch((err) => {
       this.swal$.errorMessage(err.code);
       console.log(err);

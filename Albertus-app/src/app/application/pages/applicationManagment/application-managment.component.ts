@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from '../../services/application.service';
 import { v4 as uuidv4 } from 'uuid';
 import { AuthService } from '../../../auth/services/auth.service';
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-application-managment',
@@ -15,14 +16,16 @@ export class ApplicationManagmentComponent implements OnInit {
   dsecription: string = '';
   uuid: string = uuidv4();
   application!: any;
-
+  user!:User;
   constructor(
     private applicationService$: ApplicationService,
     private auth$: AuthService
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit(): void {
-    console.log(this.auth$.getUser()?.uid);
+    this.user = this.auth$.getUser()!;
     this.listApps();
   }
 

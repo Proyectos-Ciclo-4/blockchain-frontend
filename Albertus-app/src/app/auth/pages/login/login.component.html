@@ -15,7 +15,7 @@
                     placeholder="Correo electronico"
                     pInputText
                     class="font-bold inputs-login"
-                    autocomplete="off"
+                    autocomplete="on"
                 />
                             
             </span>
@@ -49,7 +49,7 @@
             <span (click)="resetPassword()" class="">He olvidado mi contraseña</span>
         </div>
         <div class="w-full text-center mt-5 register">
-            <a href="">Registrate</a>
+            <a [routerLink]="[ '/user/register' ]">Registrate</a>
         </div>
     </form>
 </div>
