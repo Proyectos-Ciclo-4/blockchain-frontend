@@ -8,19 +8,32 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Token:</label>
+            <label for="recipient-name" class="col-form-label">Token: </label>
+            <br>
             <span>{{application?.applicationID}}</span>
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Descripción:</label>
+            <label for="message-text" class="col-form-label">Descripción: </label>            
             <textarea class="form-control" id="message-text" placeholder={{application?.description}}></textarea>
           </div>
         </form>
+        <div class="d-flex">
+          <div class="mb-3 me-4">
+            <label for="recipient-name" class="col-form-label">Creado: </label>
+            <br>
+            <span>{{application?.creationDate}}</span>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Modificado: </label>
+            <br>
+            <span>{{application?.modificationDate}}</span>
+          </div>
+        </div>
       </div>
       <div class="modal-footer ">
         <button type="button" class="btn btn-danger" (click)="deleteApp(application.applicationID)">Eliminar</button>
-        <button type="button" class="btn btn-success" >Editar</button>
-        <a [routerLink]="['report/7c334cc36972cac8b6fa5860773a3e83']" class="btn btn-info" data-bs-dismiss="modal">Generar Reporte</a>
+        <button type="button" class="btn btn-success" >Editar</button>        
+        <a [routerLink]="['report/', application?.applicationID]" class="btn btn-info" data-bs-dismiss="modal">Generar Reporte</a>
       </div>
     </div>
   </div>

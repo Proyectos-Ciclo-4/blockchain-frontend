@@ -18,9 +18,7 @@ export class ModalComponent implements OnInit {
     
   }
 
-  deleteApp(idApp : string): void {/* 
-    debugger
-    console.log(idApp);
+  deleteApp(idApp : string): void {
     Swal.fire({
       title: 'Estas seguro?',
       text: "No podras revertir esta operación",
@@ -28,7 +26,8 @@ export class ModalComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Si, eliminar!',
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.application$.deleteApp({"applicationID": idApp }).subscribe((result) => {
@@ -39,7 +38,7 @@ export class ModalComponent implements OnInit {
           )
         });
       }
-    }) */
+    })  
     
   }
 
