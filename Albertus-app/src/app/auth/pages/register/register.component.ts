@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   formRegister!: FormGroup;
+  regex: any = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{6,15}$/;
 
   constructor(
     private auth$: AuthService,
@@ -26,7 +27,8 @@ export class RegisterComponent implements OnInit {
     return new FormGroup({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      password: new FormControl('', [Validators.required,
+         Validators.pattern(this.regex)]),
     });
   }
 
