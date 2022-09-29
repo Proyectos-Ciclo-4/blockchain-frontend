@@ -14,21 +14,24 @@ export class ModalComponent implements OnInit {
   @Input() application!: any;
   formApplication!: FormGroup;
 
+
   constructor(
     private application$: ApplicationService
   ) { }
 
   ngOnInit(): void {
-    
+    this.formApplication = this.createFormApplication();
   }
 
 
-  createFormLogin(): FormGroup<any> {
+  createFormApplication(): FormGroup<any> {
     return new FormGroup({
       appName: new FormControl('', [Validators.required]),
       appDescription: new FormControl('', [Validators.required]),
     });
   }
+
+  
 
   deleteApp(idApp : string): void {
     Swal.fire({
@@ -56,14 +59,19 @@ export class ModalComponent implements OnInit {
 
 
   editApplication(idApp : string){
+    let name = "";
+    let description = "";
+    name = this.formApplication.value.appName == "" ? this.application.nameApplication
+    : this.formApplication.value.appName;
 
-    console.log(idApp);
+    description = this.formApplication.value.description == "" ? this.application.description
+    : this.formApplication.value.appDescription;
 
-
+  
     const ob = {
       applicationID: idApp,
-      nameApplication: this.formApplication.value.appName,
-      description: this.formApplication.value.appDescription
+      nameApplication: name,
+      description: description
     } as UpdateBody
 
     console.log(ob);

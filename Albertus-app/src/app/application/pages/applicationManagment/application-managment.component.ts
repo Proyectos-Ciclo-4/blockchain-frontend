@@ -61,11 +61,9 @@ export class ApplicationManagmentComponent implements OnInit {
       },
     }).then((result) => {
       this.bodyRegister = result.value;
-      console.log(this.bodyRegister);
       this.applicationService$
         .registerApp(this.bodyRegister)
         .subscribe((data) => {
-          console.log(data);
           this.listApps();
         });
     });

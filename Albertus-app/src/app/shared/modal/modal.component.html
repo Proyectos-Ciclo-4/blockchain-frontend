@@ -7,7 +7,7 @@
       <div class="modal-body">
 
         <form [formGroup]="formApplication" (submit)="editApplication(application.applicationID)" id="appDetailForm">
-          <input type="text" class="form-control modal-title" value={{application?.nameApplication}}
+          <input type="text" class="form-control modal-title" placeholder={{application?.nameApplication}}
                     formControlName="appName"
                     id="float-input-appName"
           >
@@ -18,7 +18,7 @@
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Descripción: </label>            
-            <textarea class="form-control" id="message-text" value={{application?.description}}
+            <textarea class="form-control" id="message-text" placeholder={{application?.description}}
             formControlName="appDescription"
             ></textarea>
           </div>
@@ -43,8 +43,8 @@
         <button form="appDetailForm" type="submit" class="btn btn-success"               
                 pButton
                 type="submit"            
-                class="btn-register">Editar</button>   
-                
+                class="btn-register"
+                *ngIf="formApplication.value.appName !== '' || formApplication.value.description !== '' ">Editar</button>  
         
         <a [routerLink]="['report/', application?.applicationID]" class="btn btn-info" data-bs-dismiss="modal">Generar Reporte</a>
       </div>
