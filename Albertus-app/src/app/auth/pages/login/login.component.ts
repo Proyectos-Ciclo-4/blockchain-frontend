@@ -38,16 +38,17 @@ export class LoginComponent implements OnInit {
     .then((res) =>{
       this.auth$.sessionActive.emit(true);
       this.swal$
-      .succesMessage(`Welcome ${res.user.email!}`)
+      .succesMessage(`Bienvenido ${res.user.email!}`)
       .then(() => this.router.navigate(['/my-apps']))
     })
     .catch((err) => {
       switch (err.code) {
         case "auth/user-not-found":
           this.swal$.errorMessage("El usuario no existe");
-          console.log(err.code);
           break;
-      
+        case "auth/wrong-password":
+          this.swal$.errorMessage("La Contraseña es incorrecta");
+          break;
         default:
           break;
       }

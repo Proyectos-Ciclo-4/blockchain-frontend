@@ -52,7 +52,7 @@ export class ApplicationManagmentComponent implements OnInit {
           'description'
         ) as HTMLInputElement;
         if (!appName.value || !description.value) {
-          Swal.showValidationMessage(`Please enter complete information`);
+          Swal.showValidationMessage(`Por favor ingrese la información completa`);
         }
         return {
           applicationId: this.uuid,

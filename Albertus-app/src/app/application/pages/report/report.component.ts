@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
 import { ApplicationService } from '../../services/application.service';
 import { WebsocketService } from '../../services/websocket.service';
 import { Block, eventMap } from '../interfaces/models';
@@ -24,7 +25,8 @@ export class ReportComponent implements OnInit {
   constructor(    
     private router: Router,
     private request$: ApplicationService,
-    private socketService$: WebsocketService
+    private socketService$: WebsocketService,
+    private alertService$: SweetalertService
     
   ) {
     this.applicationId = this.router.url.split('/').pop()!;
@@ -61,7 +63,7 @@ export class ReportComponent implements OnInit {
           const validationExists = this.blocks.filter(b => b.hash == block.hash);
           if (validationExists.length < 1) {
             const ob = {
-              timeStamp: block.timeStamp,
+              timeStamp: block.timeStamp.split('T')[0],
               hash: block.hash,
               year: block.timeStamp.substring(0,4),
               month: block.timeStamp.substring(5,7),
@@ -76,14 +78,50 @@ export class ReportComponent implements OnInit {
   }
 
 
+  // createReport(){
+    
+  //   this.bringBlocksByApplicationID(this.applicationId);
+  //   console.log(this.blocks);
+  //   debugger
+  //   this.extractDateInfo();  
+  //   this.blocksToReport = this.blocks.filter(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay);
+  // }
+
   createReport(){
-    this.bringBlocksByApplicationID(this.applicationId);
-    console.log(this.blocks);
-    debugger
-    this.extractDateInfo();  
-    this.blocksToReport = this.blocks.filter(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay);
+
+    this.extractDateInfo(); 
+    const tiempoTranscurrido = Date.now();
+    const hoy = new Date(tiempoTranscurrido);
+    const asd = hoy.toLocaleDateString().split('/').reverse();
+    const correctDate = hoy.toISOString().substring(0,10).split('-')
+    console.log(asd);
+    console.log(correctDate);
+
+    let todaysDate = new Date(correctDate[0] + '-' + correctDate[1] +  '-' + correctDate[2]);
+    let selectDate = new Date (this.selectedYear + '-' + this.selectedMonth + '-' + this.selectedDay);
+    
+    if(selectDate>todaysDate)
+    {
+        this.alertService$.errorMessage("Fecha Superior a fecha actual no es válida")
+    }
+    else
+    {
+      this.bringBlocksByApplicationID(this.applicationId);
+      console.log(this.blocks);
+      this.extractDateInfo();  
+      this.blocksToReport = this.blocks.filter(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay);
+      console.log(this.blocksToReport);
+    }
+
+    
+    
   }
 
+
+
+
+
+  
 
   extractDateInfo(){
     this.selectedYear = this.selectedDate.substring(0,4);
