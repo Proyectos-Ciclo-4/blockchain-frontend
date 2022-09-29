@@ -34,6 +34,9 @@ export class ApplicationManagmentComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.auth$.getUser()!;
     this.listApps();
+    this.applicationService$.appModified.subscribe(event => {
+      event.valueOf()  == true ? this.listApps() : false;
+    });
   }
 
   register() {

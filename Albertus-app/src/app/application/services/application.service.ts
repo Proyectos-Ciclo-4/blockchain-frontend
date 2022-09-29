@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApplicationService {
+  @Output() appModified: EventEmitter<boolean> = new EventEmitter();
+
   constructor(private http: HttpClient) {}
 
   createBlock(body: any, applicationID: string) {

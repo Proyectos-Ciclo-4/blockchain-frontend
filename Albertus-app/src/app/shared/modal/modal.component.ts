@@ -26,8 +26,8 @@ export class ModalComponent implements OnInit {
 
   createFormApplication(): FormGroup<any> {
     return new FormGroup({
-      appName: new FormControl('', [Validators.required]),
-      appDescription: new FormControl('', [Validators.required]),
+      appName: new FormControl('', ),
+      appDescription: new FormControl('', ),
     });
   }
 
@@ -60,32 +60,54 @@ export class ModalComponent implements OnInit {
 
   editApplication(idApp : string){
     let name = "";
-    let description = "";
+    let description2 = "";
+
     name = this.formApplication.value.appName == "" ? this.application.nameApplication
     : this.formApplication.value.appName;
 
-    description = this.formApplication.value.description == "" ? this.application.description
+    description2 = this.formApplication.value.appDescription == "" ? this.application.description
     : this.formApplication.value.appDescription;
-
-  
+        
     const ob = {
       applicationID: idApp,
       nameApplication: name,
-      description: description
+      description: description2
     } as UpdateBody
 
     console.log(ob);
-
-    // this.application$.updateApp(ob).subscribe(result => {
-    //   Swal.fire(
-    //     'Updated!',
-    //     'Tu aplicacion ha sido Editada.',
-    //     'success'
-    //   )
-    // });
+    this.application$.updateApp(ob).subscribe(result => {      
+      this.application$.appModified.emit(true);
+      let timerInterval: any;
+      Swal.fire({
+        title: 'Modificando...',
+        html: 'Efectivo en <b></b> milliseconds.',
+        timer: 1000,
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading()
+          const b: any  = Swal.getHtmlContainer()!.querySelector('b')
+          timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft()
+          }, 100)
+        },
+        willClose: () => {
+          clearInterval(timerInterval)
+        }
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log('I was closed by the timer')
+        }
+      })
+      
+    });
 
   }
 
+  updateInfo(){
+    this.application$.appModified.emit(true);
+  }
 
 
 
