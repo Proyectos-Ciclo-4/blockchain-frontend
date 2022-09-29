@@ -42,8 +42,17 @@ export class LoginComponent implements OnInit {
       .then(() => this.router.navigate(['/my-apps']))
     })
     .catch((err) => {
-      this.swal$.errorMessage(err.code);
-      console.log(err);
+      switch (err.code) {
+        case "auth/user-not-found":
+          this.swal$.errorMessage("El usuario no existe");
+          console.log(err.code);
+          break;
+      
+        default:
+          break;
+      }
+      
+      console.log(err.code);
     });
   }
 

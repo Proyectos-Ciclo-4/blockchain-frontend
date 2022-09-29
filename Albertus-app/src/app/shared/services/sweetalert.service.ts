@@ -18,12 +18,11 @@ export class SweetalertService {
     });
   }
 
-  errorMessage(message = 'Something went wrong!') {
+  errorMessage(message = 'Algo salio mal!') {
     return Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: message,
-      footer: 'Why do I have this issue?',
+      text: message,      
     });
   }
 
