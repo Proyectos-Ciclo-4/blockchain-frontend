@@ -8,5 +8,7 @@ export const environment = {
     authDomain: 'albertus-1cde3.firebaseapp.com',
     messagingSenderId: '345907086056',
   },
-  production: true
+  production: true,
+  urlBase:'https://albertus-main.herokuapp.com/',
+  urlBaseView:'https://albertus-view.herokuapp.com/'
 };

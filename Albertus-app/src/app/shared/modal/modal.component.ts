@@ -46,6 +46,7 @@ export class ModalComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.application$.deleteApp({"applicationID": idApp }).subscribe((result) => {
+          this.application$.appModified.emit(true);
           Swal.fire(
             'Deleted!',
             'Tu aplicacion ha sido eliminada.',
@@ -74,7 +75,6 @@ export class ModalComponent implements OnInit {
       description: description2
     } as UpdateBody
 
-    console.log(ob);
     this.application$.updateApp(ob).subscribe(result => {      
       this.application$.appModified.emit(true);
       let timerInterval: any;
