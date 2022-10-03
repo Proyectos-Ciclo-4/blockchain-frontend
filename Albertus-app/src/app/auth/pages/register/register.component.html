@@ -6,7 +6,7 @@
         (submit)="registerUser()"
     >   
         <h2 class="text-center mb-5 fs-1">Registrate</h2> 
-        <div class="w-full mb-5">
+        <div class="w-full mb-3">
             <span class="d-flex flex-column">                
                 <input
                     formControlName="name"
@@ -18,8 +18,13 @@
                     autocomplete="off"
                 />                            
             </span>
+        </div>
+        <div *ngIf="formRegister.get('name')!.touched ">
+            <p *ngIf="formRegister.get('name')!.hasError('required')">
+              Este campo es requerido
+            </p>            
         </div>   
-        <div class="w-full">
+        <div class="w-full mb-3">
             <span class="d-flex flex-column">               
                 <input
                     formControlName="email"
@@ -33,7 +38,15 @@
                             
             </span>
         </div>
-        <div class="w-full mt-5">
+        <div *ngIf="formRegister.get('email')!.touched " class="">
+            <p *ngIf="formRegister.get('email')!.hasError('email')">
+              Ingrese un formato de email válido
+            </p> 
+            <!-- <p *ngIf="formRegister.get('name')!.hasError('required')">
+                Este campo es requerido
+            </p>             -->
+        </div>
+        <div class="w-full mb-3">
             <span class="d-flex flex-column">                
                 <input
                     formControlName="password"
@@ -46,7 +59,16 @@
                 
             </span>
         </div> 
-        <div class="w-full text-center mt-5">
+        <div *ngIf="formRegister.get('password')!.touched " class="">
+            <p *ngIf="formRegister.get('password')!.hasError('pattern')">
+            Ingrese un contraseña valida. <br/>
+            * Mínimo 6 carácteres.<br/>
+            * Mínimo una letra Mayúscula.<br/>
+            * Mínimo una letra Minúscula.<br/>
+            * Mínimo un carácter especial. <br/>  
+            </p>            
+        </div>
+        <div class="w-full text-center mt-2">
             <span  class="warning" *ngIf="!formRegister.valid">*Todos los campos son requeridos</span>
         </div>       
         <div class="text-center mt-5">
@@ -59,7 +81,7 @@
             </button>
         </div>        
         <div class="w-full text-center mt-5 register">
-            <a href="">Inicia Sesion</a>
+            <a [routerLink]="[ '/user/login' ]">Inicia Sesion</a>
         </div>
     </form>
 </div>

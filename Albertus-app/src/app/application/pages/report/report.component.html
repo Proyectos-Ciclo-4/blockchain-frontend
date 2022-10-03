@@ -24,7 +24,14 @@
         </tr>       
       </tbody>
   </table>
-  
+  <div class="not-found-blocks-container" *ngIf="blocksToReport.length <= 0">
+    <div class="albertus-img mt-4">
+      <img src="../../../../assets/images/Albertus.svg" alt="">
+    </div>
+    <div class="info mt-5">
+      <h2>No hay transacciones para la fecha ingresada</h2>
+    </div>
+  </div>
   <h2 class="mt-5">Total Blocks Created: <span>{{blocksToReport.length}}</span></h2>
 </div>
 <app-footer></app-footer>

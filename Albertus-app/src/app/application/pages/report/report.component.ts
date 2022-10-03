@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SweetalertService } from 'src/app/shared/services/sweetalert.service';
 import { ApplicationService } from '../../services/application.service';
-import { WebsocketService } from '../../services/websocket.service';
-import { Block, eventMap } from '../interfaces/models';
+import { Block } from '../interfaces/models';
 
 
 
@@ -24,8 +23,7 @@ export class ReportComponent implements OnInit {
 
   constructor(    
     private router: Router,
-    private request$: ApplicationService,
-    private socketService$: WebsocketService,
+    private request$: ApplicationService,    
     private alertService$: SweetalertService
     
   ) {
@@ -36,29 +34,12 @@ export class ReportComponent implements OnInit {
 
   ngOnInit(): void {    
     this.bringBlocksByApplicationID(this.applicationId);
-    this.socketService$.conect().subscribe(eventMap =>{
-      const event = eventMap as eventMap;
-      console.log(event.type);
-      if(event.type  == "blockCreated"){
-        this.createReport();
-        /* console.log(event.data)
-        const ob = {
-          timeStamp: event.data.timeStamp,
-          hash: event.data.hash,
-          year: event.data.timeStamp.substring(0,4),
-          month: event.data.timeStamp.substring(5,7),
-          day: event.data.timeStamp.substring(8,10),
-          hasOverCharge: event.data.hasOverCharge
-        } as Block;          
-        this.blocks.push(ob); */
-      } 
-    });
-
+    
   }
 
 
   bringBlocksByApplicationID(applicationId:string){
-    this.request$.getAllBlocksByApplicationId(applicationId).subscribe(blocks => {
+    this.request$.getAllBlocksByApplicationId(applicationId).subscribe((blocks: any[]) => {
         blocks.map((block: any) => {
           const validationExists = this.blocks.filter(b => b.hash == block.hash);
           if (validationExists.length < 1) {
@@ -110,7 +91,7 @@ export class ReportComponent implements OnInit {
       console.log(this.blocks);
       this.extractDateInfo();  
       this.blocksToReport = this.blocks.filter(block => block.year === this.selectedYear && block.month === this.selectedMonth && block.day === this.selectedDay);
-      console.log(this.blocksToReport);
+      
     }
 
     
