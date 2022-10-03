@@ -1,11 +1,21 @@
-.header{    
-    height: 100px;
+
+nav{        
+    padding: 1.5rem 2.5rem; 
+    background-color: var(--color-primary);
 }
 
-.header > nav{    
-    height: 100%;
-    padding: 0 3rem;
-    background-color: var(--color-primary);
+.navbar-collapse{
+    flex-grow: 0;
+}
+
+.btn-navbar:hover{
+    color: white;
+    
+    background-color: var(--color-secondary);
+}
+
+.btn-navbar{
+    font-family: Hatton;
 }
 
 button{    
@@ -14,4 +24,19 @@ button{
 
 .logo{
     height: 38px;    
+}
+
+@media (max-width: 425px) {
+    nav{            
+        padding: 1.5rem;         
+    }
+}
+
+@media (max-width: 320px) {
+    nav{            
+        padding: 1rem;         
+    }
+    .logo{
+        height: 30px;    
+    }
 }

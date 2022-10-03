@@ -116,3 +116,24 @@
 input#app-name{
     border: none!important;
 }
+
+/*Responsive*/
+@media (max-width: 830px) {
+    .welcome-container{
+        padding: 1rem 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .welcome-container img {
+        width: 100%;
+        margin-top: 1rem;        
+    }
+    .create-app-container{
+        font-size: 3rem;
+        padding: 0;
+        justify-content: center;
+    }
+    .create-app-container > span{
+        padding-bottom: 1rem;
+    }
+}

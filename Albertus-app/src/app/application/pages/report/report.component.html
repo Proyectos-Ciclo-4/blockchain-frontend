@@ -1,12 +1,12 @@
 <app-navbar></app-navbar>
 
-<div class="container py-5">
+<div class="container py-5 table-responsive-sm">
   <div class="date-container">
     <label for="blockDate" class="mb-3">Fecha: </label>
     <input type="date" id="blockDate" class="form-control" (change)="createReport()" [(ngModel)]="selectedDate"  name="blockDate" >
   </div>
   
-  <table class="table table-striped mt-5">
+  <table class="table table-striped mt-5 table-responsive table-hover">
     <thead>
       <tr>
         <th>Tipo de Transacción</th>
@@ -28,8 +28,8 @@
     <div class="albertus-img mt-4">
       <img src="../../../../assets/images/Albertus.svg" alt="">
     </div>
-    <div class="info mt-5">
-      <h2>No hay transacciones para la fecha ingresada</h2>
+    <div class=" mt-4">
+      <h2 class="info">No hay transacciones para la fecha ingresada</h2>
     </div>
   </div>
   <h2 class="mt-5">Total Blocks Created: <span>{{blocksToReport.length}}</span></h2>

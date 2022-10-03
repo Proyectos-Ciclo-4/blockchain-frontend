@@ -11,9 +11,12 @@ h2{
     font-family: Hatton;
 }
 
+.info{
+    font-size: 1.5rem;    
+}
+
 .not-found-blocks-container{
-    width: 100%;
-    margin-bottom: 5rem;
+    width: 100%;    
     text-align: center;
 }
 
@@ -22,3 +25,13 @@ h2{
     height: 228px;
     margin: 0 auto;    
 }
+
+@media (max-width: 425px) {
+    .container > h2{            
+        text-align: center;
+    }
+    .date-container{
+        width: 50%;
+    }
+}
+

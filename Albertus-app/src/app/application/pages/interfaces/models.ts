@@ -17,7 +17,7 @@ export type eventMap = {
     data: Object;    
 }
 
-export type datablock = {
+export type Datablock = {
     applicationId: string,
     data: Object;
     hash: string;
@@ -31,14 +31,4 @@ export type UpdateBody = {
     applicationID: string,
     nameApplication: string,
     description: string
-}
-
-export type invoice = {
-    blockList: Block,
-    idApplication: string,
-    basePrice: number,
-    discounts: number,
-    total: number;
-    isPaid: boolean;
-    date: string;
 }

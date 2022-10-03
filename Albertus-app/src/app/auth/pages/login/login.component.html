@@ -6,7 +6,7 @@
         (submit)="login()"
     >   
         <h2 class="text-center mb-5 fs-1">Inicia Sesion</h2>            
-        <div class="w-full">
+        <div class="mb-4 inp">
             <span class="d-flex flex-column">               
                 <input
                     formControlName="email"
@@ -20,7 +20,7 @@
                             
             </span>
         </div>
-        <div class="w-full mt-5">
+        <div class="mb-4 inp">
             <span class="d-flex flex-column">                
                 <input
                     formControlName="password"
@@ -29,23 +29,28 @@
                     placeholder="Contraseña"
                     pInputText
                     class="font-bold inputs-login"
-                />
-                
+                />                
             </span>
-        </div> 
-        <div class="w-full text-center mt-5">
-            <span  class="warning" *ngIf="!formLogin.valid">*Todos los campos son requeridos</span>
-        </div>       
-        <div class="text-center mt-5">
-            <button
-                *ngIf="formLogin.valid"                
+        </div>         
+        <div class="w-full text-center mb-5" *ngIf="!formLogin.valid">
+            <span  class="warning" >*Todos los campos son requeridos</span>
+        </div>          
+        <div class="btn-container" >
+            <button 
+                *ngIf="formLogin.valid"                               
                 pButton
                 type="submit"            
                 class="btn-register"
             >Iniciar sesion
             </button>
         </div>
-        <div class="w-full text-center mt-5">
+        <div class="btn-container">
+            <button class="btn-register btn-google" type= "button" (click)="loginWhitGoogle()">
+                Inicia con google
+                <em class="bi bi-google"></em>
+            </button>
+        </div> 
+        <div class="w-full text-center mt-4">
             <span (click)="resetPassword()" class="">He olvidado mi contraseña</span>
         </div>
         <div class="w-full text-center mt-5 register">

@@ -5,8 +5,10 @@ import {
   getAuth,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   UserCredential,
+  GoogleAuthProvider
 } from '@angular/fire/auth';
 import { LoginModel } from '../interfaces/LoginModel';
 import { User } from 'firebase/auth';
@@ -32,6 +34,10 @@ export class AuthService {
 
   login({ email, password }: LoginModel): Promise<UserCredential> {
     return signInWithEmailAndPassword(this.auth$, email, password);
+  }
+
+  loginWithGoogle(): Promise<UserCredential> {
+    return signInWithPopup(this.auth$, new GoogleAuthProvider());
   }
 
   resetPassword(email: string) {

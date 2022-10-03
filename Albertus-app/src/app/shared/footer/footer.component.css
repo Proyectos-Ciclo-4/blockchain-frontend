@@ -1,7 +1,7 @@
 .footer-container{
     width: 100%;       
     background-color: white;
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
 }
 

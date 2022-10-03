@@ -21,7 +21,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.sessionActive = getAuth().currentUser ?  true : false;
     //this.auth$.sessionActive.subscribe(sessionActive => this.sessionActive = sessionActive.valueOf());
-    console.log(this.sessionActive);
   }
 
   logout(){

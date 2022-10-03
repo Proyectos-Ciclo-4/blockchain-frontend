@@ -12,7 +12,7 @@ import { User } from '@angular/fire/auth';
   styleUrls: ['./application-managment.component.css'],
 })
 export class ApplicationManagmentComponent implements OnInit {
-  title: string = 'Create Application';
+  title: string = 'Registrar Aplicación';
   bodyRegister: any;
   dsecription: string = '';
   uuid: string = uuidv4();
@@ -20,15 +20,13 @@ export class ApplicationManagmentComponent implements OnInit {
   user!:User;
   currentApp!:any;
 
-  saludar:any;
+  
   constructor(
     private applicationService$: ApplicationService,
     private auth$: AuthService,
     private swal$ : SweetalertService
   ) {
-    this.saludar  = function name() {
-      console.log("hola")
-    }
+    
   }
 
   ngOnInit(): void {

@@ -11,6 +11,8 @@
 .text-container{
     width: 45%;
     height: 100%;
+    padding: 2rem;
+    font-family: Hatton;
     text-align: center;
     color: white;
     display: flex;
@@ -31,4 +33,38 @@
 .text-container > p{ 
     font-weight: 300px;    
     font-size: 2rem;
+}
+
+@media (max-width: 425px) {
+    .home-container{
+        background-position: inherit;
+    }
+    .text-container{
+        width: 100%;        
+        justify-content: flex-start; 
+    }
+    .home-title{    
+        width: 80%; 
+        margin-top: 6rem;
+        margin-bottom: 4rem; 
+    }
+    
+    p{  
+        width: 100%;
+        padding: 2rem 0;
+        background-color: var(--color-primary);
+        color: var(--color-secondary);  
+        font-size: 0.5rem;  
+    }
+}
+
+@media (min-width: 426px)  and (max-width:1024px) {
+    
+    .text-container > p{ 
+       
+    }
+    .home-title{    
+        width: 80%; 
+        margin-bottom: 5rem; 
+    }
 }

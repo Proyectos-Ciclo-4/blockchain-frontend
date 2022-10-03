@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
     ...canActivate(() => redirectLoggedInTo(['/'])) 
   },
+  {
+    path: 'api',
+    loadChildren: () => import('./api/api.module').then((m) => m.ApiModule),     
+  },
   
 ];
 

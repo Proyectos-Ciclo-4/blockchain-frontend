@@ -5,9 +5,9 @@
         [formGroup]="formRegister"
         (submit)="registerUser()"
     >   
-        <h2 class="text-center mb-5 fs-1">Registrate</h2> 
-        <div class="w-full mb-3">
-            <span class="d-flex flex-column">                
+        <h2 class="text-center mb-5 fs-1 inputs">Registrate</h2> 
+        <div class="mb-4 inp">
+            <span class="d-flex flex-column align-items-center">                
                 <input
                     formControlName="name"
                     id="float-input-name"
@@ -24,8 +24,8 @@
               Este campo es requerido
             </p>            
         </div>   
-        <div class="w-full mb-3">
-            <span class="d-flex flex-column">               
+        <div class="mb-4 inp">
+            <span class="d-flex flex-column align-items-center">               
                 <input
                     formControlName="email"
                     id="float-input-email"
@@ -41,13 +41,10 @@
         <div *ngIf="formRegister.get('email')!.touched " class="">
             <p *ngIf="formRegister.get('email')!.hasError('email')">
               Ingrese un formato de email válido
-            </p> 
-            <!-- <p *ngIf="formRegister.get('name')!.hasError('required')">
-                Este campo es requerido
-            </p>             -->
+            </p>             
         </div>
-        <div class="w-full mb-3">
-            <span class="d-flex flex-column">                
+        <div class="w-full mb-4 inp">
+            <span class="d-flex flex-column align-items-center">                
                 <input
                     formControlName="password"
                     id="float-input-password"
@@ -68,19 +65,25 @@
             * Mínimo un carácter especial. <br/>  
             </p>            
         </div>
-        <div class="w-full text-center mt-2">
-            <span  class="warning" *ngIf="!formRegister.valid">*Todos los campos son requeridos</span>
+        <div class="w-full text-center mt-2 mb-4" *ngIf="!formRegister.valid">
+            <span  class="warning" >*Todos los campos son requeridos</span>
         </div>       
-        <div class="text-center mt-5">
-            <button
-                *ngIf="formRegister.valid"                
+        <div class="text-center btn-container">            
+            <button 
+            *ngIf="formRegister.valid"                               
                 pButton
                 type="submit"            
                 class="btn-register"
             >Registrarse
             </button>
-        </div>        
-        <div class="w-full text-center mt-5 register">
+        </div> 
+        <div class="btn-container mb-4">
+            <button class="btn-register btn-google" type= "button" (click)="loginWhitGoogle()">
+                Inicia con google
+                <em class="bi bi-google"></em>
+            </button>
+        </div>       
+        <div class="w-full text-center mt-4 register">
             <a [routerLink]="[ '/user/login' ]">Inicia Sesion</a>
         </div>
     </form>

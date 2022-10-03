@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<div class="api-container">
+    <div class="d-flex flex-column w-55">
+        <div class="container">
+            <h2 class="title pb-4">¿Como interactuar con nuestra Api?</h2>
+            <p class="subtitle mb-5">Crea respaldos de tu informacion, <br>
+            facil y rapido.
+            </p>
+        </div>
+        <div class="example-container d-flex justify-content-around flex-wrap">
+            <div class="d-flex flex-column align-items-center">
+                <span > <b>Crea</b>  un respaldo.</span>
+                <div class="card-request">
+                    <div class="input-group mb-3 input-request">
+                        <span class="input-group-text type-request" id="basic-addon1">Post:</span>
+                        <input class="form-control" type="text" value="https://albertus-main.herokuapp.com/create/block" aria-label="readonly input example" readonly>
+                    </div> 
+                    
+    <code>
+    <pre>
+    Header:
+    &#123;
+        "Authorization", "Bearer TokenDeMiApp”
+    },
+    Body:
+    &#123;
+        "ejemplo": &#123;
+            "de": "Remitente",
+            "para": "Destinatario",
+            "mensaje": "hola mundo",
+            "o-culaquier": "cosa que se nos ocurra"
+        }
+    }
+    Response : hashDeEjemplo
+    </pre>
+    
+    </code>
+                    
+                </div>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <span><b>Solicita</b> tu informacion.</span>
+                <div class="card-request">
+                    <div class="input-group mb-3 input-request">
+                        <span class="input-group-text type-request" id="basic-addon1">Get:</span>
+                        <input class="form-control" type="text" value="https://albertus-view.herokuapp.com/create/block/&#123;hash}" aria-label="readonly input example" readonly>
+                    </div>                    
+                    
+    <code>
+    <pre>    
+    Response:
+    &#123;
+        "ejemplo": &#123;
+            "de": "Remitente",
+            "para": "Destinatario",
+            "mensaje": "hola mundo",
+            "o-culaquier": "cosa que se nos ocurra"
+        }
+    }
+
+    Response : hashDelBloqueCreado
+    </pre>        
+    </code>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="api-illustration">
+        <img src="../../assets/images/api-illustration.svg" alt="api-illustration">
+    </div>
+</div>

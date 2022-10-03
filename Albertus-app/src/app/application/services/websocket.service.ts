@@ -7,13 +7,20 @@ import { environment } from 'src/environments/environment';
 })
 export class WebsocketService {
   private socket!: WebSocketSubject<unknown>;
-  constructor() { }
+  
+  constructor() { 
+    this.ping();
+  }
 
   conect(){
-    return this.socket = webSocket(`${environment.urlWebSocket}/1`)
+    return this.socket = webSocket(`${environment.urlWebSocket}/retrieve/1`)
   }
 
   close(){
-    this.socket.unsubscribe();
+    this.socket.unsubscribe();    
+  }
+
+  ping(){
+    setInterval(() => this.socket.next("ping"), 30000);
   }
 }

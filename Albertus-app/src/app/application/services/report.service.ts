@@ -12,8 +12,6 @@ export class ReportService {
       private http: HttpClient
     ) { }
 
-
-
   getAllBlocksByApplicationId(idApplication:string): Observable<any>{
     return this.http.get(`${environment.urlBaseView}blocks/${idApplication}`);
   }

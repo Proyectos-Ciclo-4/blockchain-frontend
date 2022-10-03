@@ -51,10 +51,19 @@ export class LoginComponent implements OnInit {
           break;
         default:
           break;
-      }
-      
-      console.log(err.code);
+      }            
     });
+  }
+
+  loginWhitGoogle(){
+    this.auth$.loginWithGoogle()
+    .then((res) =>{
+      this.auth$.sessionActive.emit(true);
+      this.swal$
+      .succesMessage(`Bienvenido ${res.user.email!}`)
+      .then(() => this.router.navigate(['/my-apps']))
+    })
+    .catch((err) => console.log(err));
   }
 
   resetPassword() {
