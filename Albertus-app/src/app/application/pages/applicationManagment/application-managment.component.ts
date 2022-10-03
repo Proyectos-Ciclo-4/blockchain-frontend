@@ -40,9 +40,9 @@ export class ApplicationManagmentComponent implements OnInit {
   register() {
     Swal.fire({
       title: this.title,
-      html: `<span class="text-start">Name:</span><div class="row d-flex justify-content-center mx-5">
-      <input type="text" class="mb-2 border border-secondary rounded-2" id="app-name" placeholder="App name">
-      <span>Description:</span><input type="text" id="description" class="py-3 border border-secondary rounded-2" placeholder="Description"></div>`,
+      html: `<span class="text-start">Nombre:</span><div class="row d-flex justify-content-center mx-5">
+      <input type="text" class="mb-2 border border-secondary rounded-2" id="app-name" placeholder="Nombre de la aplicación">
+      <span>Descripción:</span><input type="text" id="description" class="py-3 border border-secondary rounded-2" placeholder="Descripción"></div>`,
       confirmButtonColor: 'rgb(12 40 73)',
       preConfirm: () => {
         const appName = document.getElementById('app-name') as HTMLInputElement;
